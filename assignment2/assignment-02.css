@@ -1,0 +1,101 @@
+.the-ghost {
+  display: flex;
+  position: relative;
+  margin: 1%;
+  background-color: #A36FFF;
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}
+.ghost-container{
+  background-color: orange;
+  display: flex;
+  border-radius: 10px;
+  margin: 1%;
+}
+.square {
+  width: 300px;
+  height: 400px;
+  background-color: red;
+  padding: 20px;
+  margin: 1%;
+  border-radius: 10px;
+  position: absolute;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 15px;
+  letter-spacing: .9px;
+}
+.square2 {
+  width: 320px;
+  background-color: yellow;
+  padding: 20px;
+  margin: 1%;
+  margin-top: 35%;
+  border-radius: 10px;
+  border-color: green;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 15px;
+  letter-spacing: .9px;
+}
+.square3 {
+  width: 500px;
+  background-color: #6FD8FF;
+  padding: 20px;
+  margin: 1%;
+  margin-top: 1%;
+  border-radius: 10px;
+  border-color: green;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 15px;
+  letter-spacing: .9px;
+}
+.square-text {
+  margin-top: 50%;
+}
+
+/* Reference: https://getcssscan.com/css-buttons-examples */
+.buttons{
+  margin: 2%;
+  appearance: button;
+  background-color: #1CB0F6;
+  border: 1px solid darkblue;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 15px;
+  letter-spacing: .9px;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.buttons:hover {
+  filter: brightness(1.1);
+}
+
+/* Referenced from John Keating's EUCodeWeek seminar */
+.myDisplayBox {
+    display: none;
+    border-radius: 16px;
+    border: 1px solid black;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color: white;
+    height: 600px;
+    width: 500px;
+    background-color: #A36FFF;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px;
+    overflow: scroll;
+    align-items: center;
+    justify-content: center;
+}

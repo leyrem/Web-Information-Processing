@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--Tested with Chrome Version 98.0.4758.109 in windows and mac. SVGs downloaded played with HTML preview package in Atom, working. -->
+<html>
+</html>
+<head>
+  <title>SVG Ghost</title>
+  <link rel='stylesheet' href='./assignment-02.css'>
+  <script>
+
+      // Global variable and function used to select each of the animation effects when pressing thee buttons.
+      var globalNum = 1;
+      function setVal(num){
+        globalNum = num;
+      }
+
+      // Functions that begin each of the 6 animation effects.
+      function toggleEyes() {
+          document.getElementById('one1').beginElement();
+          document.getElementById('one2').beginElement();
+      }
+      function toggleEyebrows() {
+        document.getElementById('eyebrow-l-1').beginElement();
+        document.getElementById('eyebrow-r-1').beginElement();
+        document.getElementById('eyebrow-l-2-move').beginElement();
+        document.getElementById('eyebrow-r-1-move').beginElement();
+      }
+      function moveGhostBody(){
+          document.getElementById('body1').beginElement();
+      }
+      function floatGhost(){
+        document.getElementById('floatGhost').beginElement();
+      }
+      function rotateGhost(){
+        document.getElementById('rotateGhost').beginElement();
+      }
+      function scaleEyes(){
+        document.getElementById('scaleEyes').beginElement();
+      }
+
+      // Function that calls an animation to start depending on the value of the global variable.
+      function toggleAnimation() {
+        switch(globalNum) {
+          case 1:
+            toggleEyes();
+            break;
+          case 2:
+            toggleEyebrows();
+            break;
+          case 3:
+            moveGhostBody();
+            break;
+          case 4:
+            floatGhost();
+            break;
+          case 5:
+            rotateGhost();
+            break;
+          case 6:
+            scaleEyes();
+            break;
+          }
+      }
+      // Function that displays the svg souce code. Referenced from John Keatings EU Code Week 2021 Seminar.
+      function displaySource(){
+        var svgObject = document.getElementById('ghostSVG');
+        var displayBox = document.getElementById('myXMLDisplay');
+        displayBox.textContent = '<svg  width="400" height="480" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">' + svgObject.innerHTML +
+                                 "</svg>";
+      }
+
+      // Function that toggles between the svg ghost image and the source code.
+      document.getElementById("myXMLDisplay").display = "none";
+      function toggleSourceSvg(){
+        var x = document.getElementById("myXMLDisplay");
+        var g = document.getElementById("ghostSVG");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+          g.style.display = "none";
+          displaySource();
+        } else {
+          x.style.display = "none";
+          g.style.display = "block";
+        }
+      }
+
+      // Function that downloads the svg ghost image. Since I am using begin="indefinite" for the animations,
+      // I set the attribute begin to 0s just before downloading the selected animation effect, and set all the others to
+      // indefinite in case thay had been previously modified.
+      function downloadSVG(){
+
+        switch(globalNum) {
+          case 1:
+            document.getElementById('one1').setAttribute('begin', '0s');
+            document.getElementById('one2').setAttribute('begin', '0s');
+
+            document.getElementById('eyebrow-l-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-l-2-move').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1-move').setAttribute('begin', 'indefinite');
+            document.getElementById('body1').setAttribute('begin', 'indefinite');
+            document.getElementById('floatGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('rotateGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('scaleEyes').setAttribute('begin', 'indefinite');
+            break;
+          case 2:
+            document.getElementById('eyebrow-l-1').setAttribute('begin', '0s');
+            document.getElementById('eyebrow-r-1').setAttribute('begin', '0s');
+            document.getElementById('eyebrow-l-2-move').setAttribute('begin', '0s');
+            document.getElementById('eyebrow-r-1-move').setAttribute('begin', '0s');
+
+            document.getElementById('body1').setAttribute('begin', 'indefinite');
+            document.getElementById('floatGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('rotateGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('scaleEyes').setAttribute('begin', 'indefinite');
+            document.getElementById('one1').setAttribute('begin', 'indefinite');
+            document.getElementById('one2').setAttribute('begin', 'indefinite');
+            break;
+          case 3:
+            document.getElementById('body1').setAttribute('begin', '0s');
+
+            document.getElementById('eyebrow-l-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-l-2-move').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1-move').setAttribute('begin', 'indefinite');
+            document.getElementById('floatGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('rotateGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('scaleEyes').setAttribute('begin', 'indefinite');
+            document.getElementById('one1').setAttribute('begin', 'indefinite');
+            document.getElementById('one2').setAttribute('begin', 'indefinite');
+              break;
+          case 4:
+            document.getElementById('floatGhost').setAttribute('begin', '0s');
+
+            document.getElementById('eyebrow-l-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-l-2-move').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1-move').setAttribute('begin', 'indefinite');
+            document.getElementById('body1').setAttribute('begin', 'indefinite');
+            document.getElementById('rotateGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('scaleEyes').setAttribute('begin', 'indefinite');
+            document.getElementById('one1').setAttribute('begin', 'indefinite');
+            document.getElementById('one2').setAttribute('begin', 'indefinite');
+            break;
+          case 5:
+            document.getElementById('rotateGhost').setAttribute('begin', '0s');
+
+            document.getElementById('eyebrow-l-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-l-2-move').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1-move').setAttribute('begin', 'indefinite');
+            document.getElementById('body1').setAttribute('begin', 'indefinite');
+            document.getElementById('floatGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('scaleEyes').setAttribute('begin', 'indefinite');
+            document.getElementById('one1').setAttribute('begin', 'indefinite');
+            document.getElementById('one2').setAttribute('begin', 'indefinite');
+            break;
+          case 6:
+            document.getElementById('scaleEyes').setAttribute('begin', '0s');
+
+            document.getElementById('eyebrow-l-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-l-2-move').setAttribute('begin', 'indefinite');
+            document.getElementById('eyebrow-r-1-move').setAttribute('begin', 'indefinite');
+            document.getElementById('body1').setAttribute('begin', 'indefinite');
+            document.getElementById('floatGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('rotateGhost').setAttribute('begin', 'indefinite');
+            document.getElementById('one1').setAttribute('begin', 'indefinite');
+            document.getElementById('one2').setAttribute('begin', 'indefinite');
+            break;
+          }
+
+
+    // code that downloads the svg. Referenced from https://stackoverflow.com/questions/18428685/downloading-a-dynamically-generated-svg-file-from-the-browser/25629167#25629167-->
+        var svg_root = document.getElementById('ghostSVG');
+        var svg_source = svg_root.outerHTML;
+        var svg_data_uri = 'data:image/svg+xml;base64,' + btoa(svg_source);
+        var link = document.getElementById('dplace');
+        link.setAttribute('href', svg_data_uri);
+      }
+    </script>
+</head>
+<body>
+  <div class ="ghost-container">
+    <div class="square">
+      <!-- When clicking on each of the different animation buttons, the value of the global variable is changed and set.
+      This will deteremine which animation is played when clicking ANIMATE and which svg is downloaded
+     -->
+      <button class="buttons" role="button" onclick="setVal(1)">Move eyes</button>
+      <button class="buttons" role="button" onclick="setVal(2)">Move eyebrows</button>
+      <button class="buttons" role="button" onclick="setVal(3)">Move ghost body</button>
+      <button class="buttons" role="button" onclick="setVal(4)">Make ghost float</button>
+      <button class="buttons" role="button" onclick="setVal(5)">Rotate ghost</button>
+      <button class="buttons" role="button" onclick="setVal(6)">Zoom eyes</button>
+      <p>ANIMATION ZONE</p>
+    </div>
+    <div class="square2">
+      <button id="trybutton" class="buttons" role="button" onclick="toggleAnimation();">Play / Animate</button>
+      <button class="buttons" role="button" onclick="toggleSourceSvg();">SVG / SOURCE</button>
+      <a id="dplace" download>
+        <button class="buttons" role="button" id="donwload-button" onclick="downloadSVG();">Download</button>
+      </a>
+      <p>BUTTON ZONE</p>
+    </div>
+
+  <div class ="the-ghost">
+    <div id="myXMLDisplay" class="myDisplayBox"></div>
+    <div id="svg_source">
+    <svg	id="ghostSVG" width="400"	height="480"	viewBox="0	0	100	120" xmlns:xlink="http://www.w3.org/2000/svg" version="1.1" >
+    	 	 <rect	 id="background"	 width="100"	 height="120"	 style="fill:black;	 stroke-width:1; stroke:black"/>
+    		<g	id="ghost"	transform="rotate(0),	translate(0,0),	scale	(1.0)">
+    	 	 	 	 <path	 id="body"	 d="M	 10	 120	 A	 2.0	 5.8,	 0	 0	 1,	 90	 120"	 style="stroke:white;	 strokewidth:0.5;	fill:white">
+               <animate id="body1" attributeName="d" attributeType="XML" from="M	 10	 120	 A	 2.0	 5.8,	 0	 0	 1,	 90	 120"  to="M	 10	 150	 A	 2.0	 6.8,	 1	 1	1,	 80	 110" begin="indefinite" dur="1.5s" />
+             </path>
+    				<g	id="eyes"	transform="rotate(0,50,40),	translate(0,0)">
+    						<g	id="eye-l"	transform="rotate(0,50,40),	translate(0,0)">
+    	 	 	 	 	 	 	 	 <ellipse	 id="eye-l-ball"	 cx="45"	 cy="40"	 rx="4"	 ry="6"	 style="stroke:black; fill:black;"/>
+    								<rect	transform="rotate(16,46,35)"	x="40"	y="33"	width="11"	height="6"	fill="white" visibility="hidden"	/>
+    								<circle	id="eye-l-pupil"	cx="45"	cy="44"	r="0.5"	style="stroke:white;	fill:white">
+                      <animate id="one1" attributeName="cy" attributeType="XML" from="44"  to="36" begin="indefinite" dur="2s" />
+                      <animate id="two1" attributeName="cy" attributeType="XML" from="36"  to="44" begin="one1.end" dur="2s" />
+                    </circle>
+    								<g	id="eye-l-brow">
+    	 	 	 	 	 	 	 	 	 	 <path	 d="M	 41	 32	 Q	 45	 27	 49	 32"	 stroke="black"	 stroke-width="1" fill="transparent">
+                           <animate id="eyebrow-l-1" attributeName="stroke-width" attributeType="XML" from="1"  to="3" begin="indefinite" dur="2s" />
+                           <animate id="eyebrow-l-2-move" attributeName="d" attributeType="XML" from="M	 41	 32	 Q	 45	 27	 49	 32" to="M	 41	 25	 Q	 50	 40	 49	 32" begin="indefinite" dur="2s" />
+                         </path>
+    								</g>
+    						</g>
+    						<g	id="eye-r"	transform="rotate(0,50,40),	translate(0,0)">
+    	 	 	 	 	 	 	 	 <ellipse	 id="eye-r-ball"	 cx="55"	 cy="40"	 rx="4"	 ry="6"	 style="stroke:black;fill:black"/>
+    	 	 	 	 	 	 	 	 <rect	 transform="rotate(-16,56,35)"	 x="49"	 y="32"	 width="11"	 height="6"fill="white"	visibility="hidden"	/>
+    								<circle	id="eye-r-pupil"	cx="55"	cy="44"	r="0.5"	style="stroke:white;	fill:white">
+                      <animate id="one2" attributeName="cy" attributeType="XML"from="44"  to="36" begin="indefinite" dur="2s" />
+                      <animate id="two2" attributeName="cy" attributeType="XML" from="36"  to="44" begin="one2.end" dur="2s" />
+                    </circle>
+    						</g>
+    						<g	id="eye-l-brow">
+    	 	 	 	 	 	 	 	 <path	 d="M	 51	 32	 Q	 55	 27	 59	 32"	 stroke="black"	 stroke-width="1" fill="transparent">
+                       <animate id="eyebrow-r-1" attributeName="stroke-width" attributeType="XML" from="1"  to="3" begin="indefinite" dur="2s" />
+                       <animate id="eyebrow-r-1-move" attributeName="d" attributeType="XML" from="M	 51	 32	 Q	 55	 27	 59	 32"to="M	 51	 32	 Q	60 27	 59	 32" begin="indefinite" dur="2s" />
+                    </path>
+    						</g>
+    				</g>
+            <animateTransform id="scaleEyes" xlink:href="#eyes" attributeName="transform" type="scale" values="1;1.2;1" begin="indefinite" dur="2s" />
+    		</g>
+        <animateTransform id="floatGhost" xlink:href="#ghost" attributeName="transform" type ="translate" values="0,3;3,0;0,3" begin= "indefinite" dur="4s"/>
+        <animateTransform id="rotateGhost" xlink:href="#ghost" attributeName="transform" type ="rotate" values="0;70;0" begin="indefinite" dur="4s"/>
+    </svg>
+  </div>
+  </div>
+  <div class="square3">
+    <div class="square-text">
+      <p> Select one type of animation from the Animation Zone and click on PLAY / ANIMATE to see it in action. </p>
+      <p> Click on SVG / SOURCE to toggle between the ghost SVG image and the source code. </p>
+      <p> Click on DOWNLOAD to download the ghost SVG with the current selected animation. </p>
+    </div>
+  </div>
+  </div>
+</body>

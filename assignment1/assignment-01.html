@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Food Pyramid</title>
+    <link rel='stylesheet' href='./assignment-01.css'>
+    <script>
+
+      document.getElementById("tt").innerHTML = "Hello World!";
+      function increaseCounterByOne(id) {
+          document.getElementById(id).innerHTML = parseInt(document.getElementById(id).innerHTML)+1;
+      }
+      function decreaseCounterByOne(id) {
+          document.getElementById(id).innerHTML = parseInt(document.getElementById(id).innerHTML)-1 < 0? 0: parseInt(document.getElementById(id).innerHTML)-1;
+      }
+      function showButtons(id1, id2) {
+          document.getElementById(id1).style.display = "block";
+          document.getElementById(id2).style.display = "block";
+      }
+      function hideButtons(id1, id2) {
+          document.getElementById(id1).style.display = "none";
+          document.getElementById(id2).style.display = "none";
+      }
+
+
+    </script>
+</head>
+<body>
+  <div class = "body-of-pyramid">
+    <p>My Food Pyramid</p>
+    <div id = "level-1-pyramid" onmouseover="showButtons('b1m', 'b1p');" onmouseout="hideButtons('b1m', 'b1p');">
+      <span onClick="decreaseCounterByOne('level-1-counter');"  class="numberCircle tabular counter1" id="b1m">-</span>
+      <span class="numberCircle tabular first" id="level-1-counter">2</span>
+      <span onClick="increaseCounterByOne('level-1-counter');" class="numberCircle tabular counter1" id="b1p">+</span>
+    </div>
+    <div id = "level-2-pyramid" onmouseover="showButtons('b2m','b2p');" onmouseout="hideButtons('b2m', 'b2p');" >
+      <span onClick="decreaseCounterByOne('level-2-counter');" class="numberCircle tabular counter" id="b2m">-</span>
+      <span class="numberCircle tabular" id="level-2-counter">4</span>
+      <span onClick="increaseCounterByOne('level-2-counter');" class="numberCircle tabular counter" id="b2p">+</span>
+    </div>
+    <div id = "level-3-pyramid" onmouseover="showButtons('b3m','b3p');" onmouseout="hideButtons('b3m', 'b3p');">
+      <span onClick="decreaseCounterByOne('level-3-counter');"  class="numberCircle tabular counter" id="b3m">-</span>
+      <span class="numberCircle tabular" id="level-3-counter">3</span>
+      <span onClick="increaseCounterByOne('level-3-counter');" class="numberCircle tabular counter" id="b3p">+</span>
+    </div>
+    <div id = "level-4-pyramid" onmouseover="showButtons('b4m','b4p');" onmouseout="hideButtons('b4m', 'b4p');">
+      <span onClick="decreaseCounterByOne('level-4-counter');"  class="numberCircle tabular counter" id="b4m">-</span>
+      <span class="numberCircle tabular" id="level-4-counter">3</span>
+      <span onClick="increaseCounterByOne('level-4-counter');" class="numberCircle tabular counter" id="b4p">+</span>
+    </div>
+    <div id = "level-5-pyramid" onmouseover="showButtons('b5m','b5p');" onmouseout="hideButtons('b5m', 'b5p');">
+      <span onClick="decreaseCounterByOne('level-5-counter');"  class="numberCircle tabular counter" id="b5m">-</span>
+      <span class="numberCircle tabular" id="level-5-counter">4</span>
+      <span onClick="increaseCounterByOne('level-5-counter');" class="numberCircle tabular counter" id="b5p">+</span>
+    </div>
+    <div id = "level-6-pyramid" onmouseover="showButtons('b6m','b6p');" onmouseout="hideButtons('b6m', 'b6p');">
+      <span onClick="decreaseCounterByOne('level-6-counter');"  class="numberCircle tabular counter" id="b6m">-</span>
+      <span class="numberCircle tabular" id="level-6-counter">6</span>
+      <span onClick="increaseCounterByOne('level-6-counter');" class="numberCircle tabular counter" id="b6p">+</span>
+    </div>
+  </div>
+  <div class ="date">
+    <label for ="start">Select date: </label>
+    <input type="date" id ="input-date" value="2022-01-01" name ="input-date" min="2022-01-01" max="2022-12-31">
+  </div>
+</body>
+</html>

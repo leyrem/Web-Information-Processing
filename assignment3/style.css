@@ -1,0 +1,27 @@
+.thetablediv{
+  justify-content: center;
+  align-items: center;
+  background-color: yellow;
+}
+
+table, th, td {
+  font-family: sans-serif;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+tr {
+  height: 50px;
+}
+th {
+  text-align: center;
+  width: 150px;
+}
+.headings {
+  background-color: darkgrey;
+}
+.row {
+  background-color: lightpink;
+}
+.row_ {
+  background-color: lightblue;
+}

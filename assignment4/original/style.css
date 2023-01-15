@@ -1,0 +1,49 @@
+h1, h2 {
+    font-family: sans-serif;
+    padding: 10px;
+}
+p {
+    font-family: sans-serif;
+}
+
+
+span {
+    font-family: sans-serif;
+    font-size: small;
+    margin-left: 2%;
+}
+
+.personal_info{
+    margin:1%;
+}
+
+.submit_button{
+    margin: 2%;
+    appearance: button;
+    background-color: #1CB0F6;
+    border: 1px solid darkblue;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 15px;
+    letter-spacing: .9px;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 200px;
+  }
+  
+  .submit_button:hover {
+    filter: brightness(1.1);
+  }
+  #addUserForm{
+      font-family: sans-serif;
+
+  }
+#try {
+    background-color: blue;
+}

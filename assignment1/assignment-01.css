@@ -1,0 +1,133 @@
+body {
+  background-color: #EFEFEF;
+}
+.body-of-pyramid {
+  text-align: center;
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+#level-1-pyramid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto auto;
+  margin-bottom: 1%;
+
+  border-bottom: 110px solid brown;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  height: 0;
+  width: 0px;
+}
+#level-2-pyramid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto auto;
+  margin-bottom: 1%;
+
+  border-bottom: 110px solid chocolate;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  height: 0;
+  width: 180px;
+}
+
+#level-3-pyramid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto auto;
+
+  border-bottom: 110px solid gold;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  height: 0;
+  width: 360px;
+}
+#level-4-pyramid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto auto;
+
+  border-bottom: 110px solid deepskyblue;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  height: 0;
+  width: 540px;
+}
+#level-5-pyramid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto auto;
+
+  border-bottom: 110px solid sienna;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  height: 0;
+  width: 720px;
+}
+#level-6-pyramid {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: relative;
+  margin: auto auto;
+
+  border-bottom: 110px solid yellowgreen;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  height: 0;
+  width: 900px;
+}
+
+.numberCircle {
+    margin-top:100px;
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid;
+    font-size: 20px;
+    background-color: lightgrey;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.tabular {
+    font-family: sans-serif;
+}
+.numberCircle:hover {
+  background-color: yellow;
+}
+.counter{
+  display:none;
+}
+.counter1{
+  display:none;
+  margin-top: 160px;
+}
+.first{
+  margin-top: 160px;
+}
+.date {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 15%;
+    font-size: 40px;
+    font-family: sans-serif;
+}
+#input-date{
+  font-size: 30px;
+  font-family: sans-serif;
+}

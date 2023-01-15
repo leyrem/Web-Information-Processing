@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Student Table</title>
+  <link rel='stylesheet' href='./style.css'>
+  <script>
+
+  // Cells with numbers should be able to be modified more than once??
+
+  function changeAlign(){
+    const cells = document.getElementsByTagName('td');
+    //Setting the alignment of those cells with '-' to center.
+    for (let i = 0; i < cells.length; i ++) {
+    	if( cells[i].innerText == '-'){
+        cells[i].setAttribute('contenteditable', 'true');
+      	cells[i].style.textAlign = "center";
+        //cells[i].style.backgroundColor = "yellow";
+        cells[i].addEventListener('DOMSubtreeModified', fillAverages, false);
+      }
+    }
+  }
+
+
+  function fillAverages(){
+    const cells = document.getElementsByTagName('td');
+
+    for(let i=0; i< cells.length;i++){
+      if( (i+1) % 8 == 0){
+        var avg = Math.round((parseInt(cells[i-1].innerHTML) + parseInt(cells[i-2].innerHTML) + parseInt(cells[i-3].innerHTML) + parseInt(cells[i-4].innerHTML) + parseInt(cells[i-5].innerHTML) ) / 5)
+        if(avg < 60){
+          cells[i].style.backgroundColor = "red";
+          cells[i].style.color = "white";
+        } else {
+          cells[i].style.backgroundColor = cells[i-1].style.backgroundColor;
+          cells[i].style.color = "black";
+        }
+        cells[i].innerHTML = avg+'%';
+      }
+
+
+    }
+  }
+
+  </script>
+</head>
+<body onload="changeAlign();fillAverages();">
+
+  <div class="thetablediv" >
+    <table class="table">
+    <tr class="headings">
+      <th>Student Name</th>
+      <th>Student ID</th>
+      <th>Assignment 1</th>
+      <th>Assignment 2</th>
+      <th>Assignment 3</th>
+      <th>Assignment 4</th>
+      <th>Assignment 5</th>
+      <th>Average (%)</th>
+
+    </tr>
+    <tr class ="row">
+      <td>John Smith</td>
+      <td>8977789</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr class ="row_">
+      <td>Mary Peters</td>
+      <td>21123781</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr class ="row">
+      <td>Peter Dan</td>
+      <td>2288839</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr class ="row_">
+      <td>Ally Defin</td>
+      <td>3838399</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr class ="row">
+      <td>Javier Gonzalez</td>
+      <td>993309</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr class ="row_">
+      <td>Sophie O'Connell</td>
+      <td>283838</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr class ="row">
+      <td>Matthew Shean</td>
+      <td>299020</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr class ="row_">
+      <td>Rosa Melano</td>
+      <td>349990</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr class ="row">
+      <td>Susana Horia</td>
+      <td>192901</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr class ="row_">
+      <td>Pedro Lopez</td>
+      <td>930828</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

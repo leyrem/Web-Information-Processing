@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <title>Assignment 4 CS230</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+
+    <!-- Use W3.CSS for the Modal -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Assignment 4 CS230</h1>
+    <h2>Creating and retrieving data from USER database.</h2>
+
+    <div>
+        <form id="addUserForm">
+            <fieldset>
+                <!-- Form Name -->
+                <legend>Add User to Database</legend>
+                <p>Personal information</p>
+                <!-- Text Input - Title -->
+                <div class="personal_info">
+                    <label class="label" for="title">Title</label>
+                    <div>
+                        <input id="title" name="title" placeholder="Title" class="">
+                        <span class="">Please enter title (Mx, Ms, Mr, Mrs, Miss, Dr or Other (specify))!</span>
+                    </div>
+                </div>
+                <!-- Text Input - First Name -->
+                <div class="personal_info">
+                    <label class="label" for="firstname">First Name</label>
+                    <div>
+                        <input id="firstname" name="firstname" placeholder="First Name"class="">
+                        <span class="">Please enter your first name!</span>
+                    </div>
+                </div>
+                <!-- Text Input - Surname -->
+                <div class="personal_info">
+                    <label class="label" for="surname">Surname</label>
+                    <div>
+                        <input id="surname" name="surname" type="text" placeholder="Surname"class="">
+                        <span class="">Please enter your Surname</span>
+                    </div>
+                </div>
+
+                <!-- Text Input - Mobile -->
+                <div class="personal_info">
+                    <label class="label" for="mobile">Mobile</label>
+                    <div>
+                        <input id="mobile" name="mobile" type="text" placeholder="Mobile" class="">
+                        <span class="">Please enter your Mobile</span>
+                    </div>
+                </div>
+
+                <!-- Text Input - Email -->
+                <div class="personal_info">
+                    <label class="label" for="email">Email</label>
+                    <div>
+                        <input id="email" name="email" type="text" placeholder="Email"class="">
+                        <span class="">Please enter your Email</span>
+                    </div>
+                </div>
+
+                <p>Home address information</p>
+
+                <!-- Text Input - Address Line 1 -->
+                <div class="personal_info">
+                    <label class="label" for="address_line_1">Address line 1</label>
+                    <div>
+                        <input id="address_line_1" name="address_line_1" type="text" placeholder="Address line 1"class="">
+                        <span class="">Please enter your Address Line 1</span>
+                    </div>
+                </div>
+                <!-- Text Input - Address Line 2 -->
+                <div class="personal_info">
+                    <label class="label" for="address_line_2">Address line 2</label>
+                    <div>
+                        <input id="address_line_2" name="address_line_2" type="text" placeholder="Address line 2"class="">
+                        <span class="">Please enter your Address Line 2</span>
+                    </div>
+                </div>
+                <!-- Text Input - Town -->
+                <div class="personal_info">
+                    <label class="label" for="town">Town</label>
+                    <div>
+                        <input id="Town" name="town" type="text" placeholder="Town"class="">
+                        <span class="">Please enter Town</span>
+                    </div>
+                </div>
+                <!-- Text Input - County -->
+                <div class="personal_info">
+                    <label class="label" for="County">County</label>
+                    <div>
+                        <input id="County" name="county" type="text" placeholder="County"class="">
+                        <span class="">Please enter County</span>
+                    </div>
+                </div>
+                <!-- Text Input - Eircode -->
+                <div class="personal_info">
+                    <label class="label" for="Eircode">Eircode</label>
+                    <div>
+                        <input id="Eircode" name="eircode" type="text" placeholder="Eircode"class="">
+                        <span class="">Please enter Eircode</span>
+                    </div>
+                </div>
+
+                <p>Shipping address information</p>
+
+                <!-- Text Input - Address Line 1 -->
+                <div class="personal_info">
+                    <label class="label" for="address_line_1">Address line 1</label>
+                    <div>
+                        <input id="address_line_1_s" name="address_line_1_s" type="text" placeholder="Address line 1"class="">
+                        <span class="">Please enter your Address Line 1</span>
+                    </div>
+                </div>
+                <!-- Text Input - Address Line 2 -->
+                <div class="personal_info">
+                    <label class="label" for="address_line_2">Address line 2</label>
+                    <div>
+                        <input id="address_line_2_s" name="address_line_2_s" type="text" placeholder="Address line 2"class="">
+                        <span class="">Please enter your Address Line 2</span>
+                    </div>
+                </div>
+                <!-- Text Input - Town -->
+                <div class="personal_info">
+                    <label class="label" for="town">Town</label>
+                    <div>
+                        <input id="town_s" name="town_s" type="text" placeholder="Town"class="">
+                        <span class="">Please enter Town</span>
+                    </div>
+                </div>
+                <!-- Text Input - County -->
+                <div class="personal_info">
+                    <label class="label" for="County">County</label>
+                    <div>
+                        <input id="county_s" name="county_s" type="text" placeholder="County"class="">
+                        <span class="">Please enter County</span>
+                    </div>
+                </div>
+                <!-- Text Input - Eircode -->
+                <div class="personal_info">
+                    <label class="label" for="Eircode">Eircode</label>
+                    <div>
+                        <input id="eircode_s" name="eircode_s" type="text" placeholder="Eircode"class="">
+                        <span class="">Please enter Eircode</span>
+                    </div>
+                </div>
+                <!-- Submit -->
+                <div class="personal_info">
+                    <label class="label" for="submit"></label>
+                    <div>
+                        <input type="submit" value="Send User Data" class="submit_button">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
+    <div>
+                <form id="getUserDatabaseForm">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Show User Database</legend>
+
+                        <!-- Textarea -->
+                        <div>
+                            <label class="label" for="showUserDatabase">User Database</label>
+                            <div>
+                                <textarea  id="showUserDatabase" name="showUserDatabase"> Retrieved Database displayed here!</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div>
+                            <label class="label" for="submit"></label>
+                            <div>
+                                <input type="submit" value="Get User Database" class="submit_button">
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+    </div>
+    <div id="try">H</div>
+
+    <!-- 
+        Modal Popup used to confirm User Data was sent and added to Database 
+        W3.CSS Styled Form generated using W3.CSS modal demos
+        https://www.w3schools.com/w3css/w3css_modal.asp
+    -->
+    <div id="modalUserAdded" class="w3-modal w3-animate-opacity">
+        <div class="w3-modal-content w3-card-4">
+            <header class="w3-container w3-blue-grey">
+                <span onclick="document.getElementById('modalUserAdded').style.display='none'"
+                    class="w3-button w3-large w3-display-topright">&times;</span>
+                <h2>User Added to Database!</h2>
+            </header>
+            <div class="w3-container">
+                <p></p>
+                <p id="modalUserAddedMessage">Message Text</p>
+            </div>
+            <footer class="w3-container w3-blue-grey">
+                <p></p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- 
+        jQuery Scripts used to implement form processing and Ajax functionality
+        https://www.w3schools.com/w3css/w3css_modal.asp
+    -->
+    <script>
+        $(document).ready(function () {
+
+            // handle "Add User to Database" submit button click
+            $('#addUserForm').submit(function (e) {
+                var user = {
+                    title: $('input[name=title]').val(),
+                    firstname: $('input[name=firstname]').val(),
+                    surname: $('input[name=surname]').val(),
+                    email: $('input[name=email]').val(),
+                    mobile: $('input[name=mobile]').val(),
+                    address_line_1: $('input[name=address_line_1]').val(),
+                    address_line_2: $('input[name=address_line_2]').val(),
+                    town: $('input[name=town]').val(),
+                    county: $('input[name=county]').val(),
+                    eircode: $('input[name=eircode]').val(),
+                    address_line_1_s: $('input[name=address_line_1_s]').val(),
+                    address_line_2_s: $('input[name=address_line_2_s]').val(),
+                    town_s: $('input[name=town_s]').val(),
+                    county_s: $('input[name=county_s]').val(),
+                    eircode_s: $('input[name=eircode_s]').val(),
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:8000/api/user',
+                    data: user
+                })
+                    .done(function (data) {
+                        // reset the form for next time!
+                        $('input[name=title]').val('');
+                        $('input[name=firstname]').val('');
+                        $('input[name=surname]').val('');
+                        $('input[name=mobile]').val('');
+                        $('input[name=address_line_1]').val('');
+                        $('input[name=address_line_2]').val('');
+                        $('input[name=town]').val('');
+                        $('input[name=county]').val('');
+                        $('input[name=eircode]').val('');
+                        $('input[name=address_line_1_s]').val('');
+                        $('input[name=address_line_2_s]').val('');
+                        $('input[name=town_s]').val('');
+                        $('input[name=county_s]').val('');
+                        $('input[name=eircode_s]').val('');
+
+                        // show confirmation message from API
+                        showUserModal(data);
+                    });
+                e.preventDefault(); // when method is called, the default action of the event will not be triggered.
+                                    // meand that clicked submit button will not take the browser to a new URL.
+            });
+
+            // handle "Get User Database" submit button click
+            $('#getUserDatabaseForm').submit(function (e) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:8000/api/user'
+                })
+                    .done(function (data) {
+                        // display the database in the textarea and trigger an input change event
+                        document.getElementById('try').innerHTML = "hello";
+
+                        $('#showUserDatabase').val(JSON.stringify(data, null, 2)).trigger('input');
+                    });
+                e.preventDefault(); // when method is called, the default action of the event will not be triggered.
+                                    // meand that clicked submit button will not take the browser to a new URL.
+            });
+
+            // some fun jQuery here that is not necessary for operation
+            // this sets an event handler to resize the textarea after 
+            // a change event is triggered the call is triggered earlier
+            // after the content received from the API is written to the
+            // textarea it resizes to the size of the contained text
+            // just a vanity addition really!
+            $("#showUserDatabase").on("input", function () {
+                this.style.height = (this.scrollHeight) + "px;overflow-y:hidden;";
+                this.style.height = "auto";
+                this.style.height = (this.scrollHeight) + "px";
+            });
+
+        });
+
+        // Show the "User Added" Modal - this is a basic demo - change it!
+        function showUserModal(data) {
+            document.getElementById('modalUserAddedMessage').innerHTML = data;
+            document.getElementById('modalUserAdded').style.display = 'block';
+        }
+
+    </script>
+
+</body>
+
+</html>

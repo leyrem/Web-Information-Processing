@@ -1,0 +1,211 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+
+            // handle "Add User to Database" submit button click
+            $('#addUserForm').submit(function () {
+
+                var user = {
+                    title: $('input[name=title]').val(),
+                    firstname: $('input[name=firstname]').val(),
+                    surname: $('input[name=surname]').val(),
+                    mobile: $('input[name=mobile]').val(),
+                    email: $('input[name=email]').val(),
+                    address_line_1: $('input[name=address_line_1]').val(),
+                    address_line_2: $('input[name=address_line_2]').val(),
+                    town: $('input[name=town]').val(),
+                    county: $('input[name=county]').val(),
+                    eircode: $('input[name=eircode]').val(),
+                    address_line_1_s: $('input[name=address_line_1_s]').val(),
+                    address_line_2_s: $('input[name=address_line_2_s]').val(),
+                    town_s: $('input[name=town_s]').val(),
+                    county_s: $('input[name=county_s]').val(),
+                    eircode_s: $('input[name=eircode_s]').val(),
+                };
+                
+                $.post("ass4.php",user,function(data) {
+                        alert("Data: "+data+"\n");
+                        // reset the form for next time!
+                        $('input[name=title]').val('');
+                        $('input[name=firstname]').val('');
+                        $('input[name=surname]').val('');
+                        $('input[name=mobile]').val('');
+                        $('input[name=address_line_1]').val('');
+                        $('input[name=address_line_2]').val('');
+                        $('input[name=town]').val('');
+                        $('input[name=county]').val('');
+                        $('input[name=eircode]').val('');
+                        $('input[name=address_line_1_s]').val('');
+                        $('input[name=address_line_2_s]').val('');
+                        $('input[name=town_s]').val('');
+                        $('input[name=county_s]').val('');
+                        $('input[name=eircode_s]').val('');
+                });
+                document.getElementById('try').innerHTML = "h";
+                
+                //e.preventDefault(); // when method is called, the default action of the event will not be triggered.
+                                    // meand that clicked submit button will not take the browser to a new URL.
+            });
+
+
+
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Assignment 4 CS230</h1>
+        <h2>Creating and retrieving data from USER database.</h2>
+
+        <form id="addUserForm">
+            <fieldset>
+                <!-- Form Name -->
+                <legend>Add User to Database</legend>
+
+                <p>Personal information</p>
+
+                <!-- Text Input - First Name -->
+                <div class="personal_info">
+                    <label class="label" for="title">Title</label>
+                    <div>
+                        <input id="title" name="title" placeholder="Title" class="">
+                        <span class="">Please enter title (Mx, Ms, Mr, Mrs, Miss, Dr or Other (specify))!</span>
+                    </div>
+                </div>
+                <!-- Text Input - First Name -->
+                <div class="personal_info">
+                    <label class="label" for="firstname">First Name</label>
+                    <div>
+                        <input id="firstname" name="firstname" placeholder="First Name"class="">
+                        <span class="">Please enter your first name!</span>
+                    </div>
+                </div>
+                <!-- Text Input - Surname -->
+                <div class="personal_info">
+                    <label class="label" for="surname">Surname</label>
+                    <div>
+                        <input id="surname" name="surname" type="text" placeholder="Surname"class="">
+                        <span class="">Please enter your Surname</span>
+                    </div>
+                </div>
+
+                <!-- Text Input - Mobile -->
+                <div class="personal_info">
+                    <label class="label" for="mobile">Mobile</label>
+                    <div>
+                        <input id="mobile" name="mobile" type="text" placeholder="Mobile" class="">
+                        <span class="">Please enter your Mobile</span>
+                    </div>
+                </div>
+
+                <!-- Text Input - Email -->
+                <div class="personal_info">
+                    <label class="label" for="email">Email</label>
+                    <div>
+                        <input id="email" name="email" type="text" placeholder="Email"class="">
+                        <span class="">Please enter your Email</span>
+                    </div>
+                </div>
+
+                
+                <p>Home address information</p>
+
+                <!-- Text Input - Address Line 1 -->
+                <div class="personal_info">
+                    <label class="label" for="address_line_1">Address line 1</label>
+                    <div>
+                        <input id="address_line_1" name="address_line_1" type="text" placeholder="Address line 1"class="">
+                        <span class="">Please enter your Address Line 1</span>
+                    </div>
+                </div>
+                <!-- Text Input - Address Line 2 -->
+                <div class="personal_info">
+                    <label class="label" for="address_line_2">Address line 2</label>
+                    <div>
+                        <input id="address_line_2" name="address_line_2" type="text" placeholder="Address line 2"class="">
+                        <span class="">Please enter your Address Line 2</span>
+                    </div>
+                </div>
+                <!-- Text Input - Town -->
+                <div class="personal_info">
+                    <label class="label" for="town">Town</label>
+                    <div>
+                        <input id="Town" name="town" type="text" placeholder="Town"class="">
+                        <span class="">Please enter Town</span>
+                    </div>
+                </div>
+                <!-- Text Input - County -->
+                <div class="personal_info">
+                    <label class="label" for="County">County</label>
+                    <div>
+                        <input id="County" name="county" type="text" placeholder="County"class="">
+                        <span class="">Please enter County</span>
+                    </div>
+                </div>
+                <!-- Text Input - Eircode -->
+                <div class="personal_info">
+                    <label class="label" for="Eircode">Eircode</label>
+                    <div>
+                        <input id="Eircode" name="eircode" type="text" placeholder="Eircode"class="">
+                        <span class="">Please enter Eircode</span>
+                    </div>
+                </div>
+
+                <p>Shipping address information</p>
+
+                <!-- Text Input - Address Line 1 -->
+                <div class="personal_info">
+                    <label class="label" for="address_line_1">Address line 1</label>
+                    <div>
+                        <input id="address_line_1_s" name="address_line_1_s" type="text" placeholder="Address line 1"class="">
+                        <span class="">Please enter your Address Line 1</span>
+                    </div>
+                </div>
+                <!-- Text Input - Address Line 2 -->
+                <div class="personal_info">
+                    <label class="label" for="address_line_2">Address line 2</label>
+                    <div>
+                        <input id="address_line_2_s" name="address_line_2_s" type="text" placeholder="Address line 2"class="">
+                        <span class="">Please enter your Address Line 2</span>
+                    </div>
+                </div>
+                <!-- Text Input - Town -->
+                <div class="personal_info">
+                    <label class="label" for="town">Town</label>
+                    <div>
+                        <input id="town_s" name="town_s" type="text" placeholder="Town"class="">
+                        <span class="">Please enter Town</span>
+                    </div>
+                </div>
+                <!-- Text Input - County -->
+                <div class="personal_info">
+                    <label class="label" for="County">County</label>
+                    <div>
+                        <input id="county_s" name="county_s" type="text" placeholder="County"class="">
+                        <span class="">Please enter County</span>
+                    </div>
+                </div>
+                <!-- Text Input - Eircode -->
+                <div class="personal_info">
+                    <label class="label" for="Eircode">Eircode</label>
+                    <div>
+                        <input id="eircode_s" name="eircode_s" type="text" placeholder="Eircode"class="">
+                        <span class="">Please enter Eircode</span>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="personal_info">
+                    <label class="label" for="submit"></label>
+                    <div>
+                        <input type="submit" value="Send User Data" class="submit_button">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <div id = "try">HOPLA</div>
+    </body>
+</html>

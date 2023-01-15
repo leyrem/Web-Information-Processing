@@ -1,0 +1,378 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CRUD User Interface for NodeJS, ExpressJS and MongoDB REST API</title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/all.css" rel="stylesheet" type="text/css"/>  
+</head>
+<body>
+  <div class="container"> <!-- class="table-responsive text-nowrap (play with Bootstrap attributes for look you want) -->
+    <h2><a class="breadcrumb-item text-dark">Mobile Phone Store Database</a> <span class="badge badge-secondary" id="databaseFilterNotice"></span></h2>
+    <p>Click on the different links below to change the database you are seeing (Customers, Phones or Orders)</p>
+    <h2><a class="breadcrumb-item text-dark" href="/">Customers Database</a> <span class="badge badge-secondary" id="databaseFilterNotice"></span></h2>
+    <h2><a class="breadcrumb-item text-dark" href="/phone_view">Phones Database</a> <span class="badge badge-secondary" id="databaseFilterNotice"></span></h2>
+    <h2><a class="breadcrumb-item text-dark" href="/order_view">Orders Database</a> <span class="badge badge-secondary" id="databaseFilterNotice"></span></h2>
+    
+     <!-- phones table -->
+
+    <!-- Search the Results (Phones) Table  -->
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-search"></i></label>
+            <select class="custom-select" id="fieldSearchSelect_phones">
+                <option value="1" selected>Model</option>
+                <option value="2">Manufacturer</option>
+                <option value="3">Price</option>
+            </select>
+        </div>
+        <input class="form-control py-2 border-left-0 border" type="search" placeholder="Filter Phone List ..." id="tableFilter_phones">
+    </div>
+
+    <!-- Phones Table -->
+    <table class="table table-hover table-striped" id="phonesList">
+      <thead>
+        <tr>  <!-- <tr class="d-flex"> -->
+          <th style="width: 25%">Model</th>
+          <th style="width: 25%">Manufacturer</th>
+          <th style="width: 25%">Price</th>
+          <th class="text-center" style="width: 25%">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each results_phones}}
+        <tr >
+          <td style="width: 25%">{{model}}</td>
+          <td style="width: 25%">{{manufacturer}}</td>
+          <td style="width: 25%">{{price}}</td>
+          <td class="text-right" style="width: 25%">
+            <a href="javascript:void(0);" class="btn btn-sm btn-info update" data-id="{{ id }}" data-model="{{ model }}" data-manufacturer="{{ manufacturer }}" data-price="{{ price }}">Update</a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ id }}" data-model="{{ model }}" data-manufacturer="{{ manufacturer }}" data-price="{{ price }}">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <!-- Database Search -->
+    <div class="input-group mb-3">
+        <!-- Add Phone Button -->
+        <button class="btn btn-primary mr-5" data-toggle="modal" data-target="#addModal_phones">Add</button>
+        <!-- Search the Database (Phones) -->
+        <div class="input-group-prepend">
+             <select class="custom-select" id="databaseSearchSelect_phones">
+                <option value="model" selected>Models</option>
+                <option value="manufacturer">Manufacturers</option>
+                <option value="price">Prices</option>
+            </select>
+        </div>
+        <input class="form-control py-2 border-left-0 border" type="search" placeholder="Find in Database ..." id="databaseSearchFilter_phones">
+        <div class="input-group-append">
+            <button class="btn btn-success" type="button" id="databaseSearch_phones">Find</button>
+        </div>
+    </div>
+    <!-- Modal Add Phone -->
+    <form id="addForm_phones" action="/phones" method="POST">
+        <div class="modal fade" id="addModal_phones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add New Phone</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="model" class="form-control" placeholder="Model" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="manufacturer" class="form-control" placeholder="Manufacturer" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="price" class="form-control" placeholder="Price" required>
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+    </form>
+
+    <!-- Modal Update Phone -->
+    <form id="updateForm_phones" action="/phones" method="PUT"> 
+       <div class="modal fade" id="updateModal_phones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update Phone</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                   <input type="text" name="model" class="form-control model" placeholder="Model" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="manufacturer" class="form-control manufacturer" placeholder="Manufacturer" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="price" class="form-control price" placeholder="Price" required>
+               </div>
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="phoneId" class="id">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+       </div>
+    </form>
+
+    <!-- Modal Delete Phone-->
+    <form id="deleteForm_phones" action="/phones" method="DELETE">
+        <div class="modal fade" id="deleteModal_phones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Delete Phone</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                   </div>
+                   <div class="modal-body">
+                        <strong>Are you sure you want to delete this Phone?</strong>
+                   </div>
+                   <div class="modal-footer">
+                        <input type="hidden" name="phoneId" class="form-control id" required>
+                        <button type="submit" class="btn btn-success">Delete</button>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Operation Successful Alert Modal -->
+    <div class="modal fade" id="successAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="alert alert-success" role="alert">
+                <strong>Oh Great!</strong> RESTful Operation was Successful!
+            </div>
+        </div>
+    </div>
+
+    <!-- Operation Unsuccessful Alert Modal -->
+    <div class="modal fade" id="errorAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="alert alert-danger" role="alert">
+                <strong>Oh No!</strong> RESTful Operation was Unsuccessful!
+            </div>
+        </div>
+    </div>
+
+   </div>
+   <script src="/assets/js/jquery-3.5.0.min.js"></script>
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function(){
+       
+        // FOR PHONES
+        //
+        // Handle Add Modal form submit using AJAX PUT
+        //
+        var addForm_phones = $("#addForm_phones");
+        addForm_phones.submit(function(e){
+            e.preventDefault(); // prevent handling the normal form submit click!
+            const parsed_data = {
+                manufacturer: addForm_phones.find('input[name="manufacturer"]').val(),
+                model: addForm_phones.find('input[name="model"]').val(),
+                price: addForm_phones.find('input[name="price"]').val()
+            };
+            $.ajax({
+                type: addForm_phones.attr('method'),
+                url:  addForm_phones.attr('action'),
+                //data: addForm_phones.serialize(), // get data from form!
+                data: parsed_data, // get data from form!
+                success: function (data) {
+                    console.log('Update successful!');
+                    // make a timed Bootstrap Alert on Success
+                    // then re-direct to "/"
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/')
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    // make a timed Bootstrap Alert on Error
+                    // then re-direct to "/"
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/')
+                    }, 3000);
+                },
+            });
+            $('#addModal_phones').modal('hide');
+        });
+        //
+        // Set up the Update Modal - It is shown, and data passed, via button click
+        $('#phonesList').on('click','.update',function(){
+            var phone_id = $(this).data('id');
+            var phone_manufacturer = $(this).data('manufacturer');
+            var phone_price = $(this).data('price');
+            var phone_model = $(this).data('model');
+
+            $('#updateModal_phones').modal('show');
+            $('.model').val(phone_model);
+            $('.manufacturer').val(phone_manufacturer);
+            $('.price').val(phone_price);
+
+            $('.id').val(phone_id);
+        });
+        //
+        // Handle Update Modal form submit using AJAX PUT
+        //
+        var updateForm_phones = $("#updateForm_phones");
+        updateForm_phones.submit(function(e){
+            e.preventDefault(); // prevent handling the normal form submit click!
+            var id = updateForm_phones.find('input[name="phoneId"]').val();
+            const p_data = {
+                model: updateForm_phones.find('input[name="model"]').val(),
+                price: updateForm_phones.find('input[name="price"]').val(),
+                manufacturer: updateForm_phones.find('input[name="manufacturer"]').val()
+            };
+            $.ajax({
+                type: updateForm_phones.attr('method'),
+                url:  updateForm_phones.attr('action')+"/"+id,
+                //data: updateForm_phones.serialize(), // get data from form!
+                data: p_data, // get data from form!
+                success: function (data) {
+                    console.log('Update successful!');
+                    // make a timed Bootstrap Alert on Success
+                    // then re-direct to "/"
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/')
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    // make a timed Bootstrap Alert on Error
+                    // then re-direct to "/"
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/')
+                    }, 3000);
+                },
+            });
+            $('#updateModal_phones').modal('hide');
+        });
+        //
+        // Set up the Delete Modal - It is shown, and data passed, via button click
+        //
+        $('#phonesList').on('click','.delete',function(){
+            var phone_id = $(this).data('id');
+            // let's remind the user which Customer they are deleting
+            var phone_model = $(this).data('model');
+            var phone_manufacturer = $(this).data('manufacturer');
+
+            $("#deleteModal_phones.modal-body").html("<span class=\"font-weight-bold\">Are you sure you want to delete Phone: </span><span class=\"font-italic\">... ("+phone_manufacturer+" "+phone_model+")</span><span class=\"font-weight-bold\">?</span>");
+            $('#deleteModal_phones').modal('show');
+            $('.id').val(phone_id);
+        });
+        //
+        // Handle Delete Modal form submit using AJAX DELETE
+        //
+        var deleteForm_phones = $("#deleteForm_phones");
+        deleteForm_phones.submit(function(e){
+            // make everything look like a Single Page Application
+            // consuming the RESTful API routes based on user selection
+            e.preventDefault();  // prevent handling the normal form submit click!
+            var id = deleteForm_phones.find('input[name="phoneId"]').val();
+            $.ajax({
+                type: deleteForm_phones.attr('method'),
+                url:  deleteForm_phones.attr('action')+"/"+id,
+                success: function (data) {
+                    console.log('Deletion successful!');
+                    // make a timed Bootstrap Alert on Success
+                    // then re-direct to "/"
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/')
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    // make a timed Bootstrap Alert on Error
+                    // then re-direct to "/"
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/')
+                    }, 3000);
+                },
+            });
+            $('#deleteModal_phones').modal('hide');
+        });
+        //
+        // Search: Field Selection
+        //
+        $("#fieldSearchSelect_phones").on('change',function() {
+            var k = $(this).val();
+            if (k == 1) {
+                $("#tableFilter_phones").attr("placeholder", "Filter Phone Model List ...");
+            } else if( k == 2) {
+                $("#tableFilter_phones").attr("placeholder", "Filter Phone Manufacturer List ...");
+            } else {
+                $("#tableFilter_phones").attr("placeholder", "Filter Phone Price List ...");
+            }
+            // $("#tableFilter_phones").val("");
+            $("#tableFilter_phones").keyup();
+        });
+        //
+        // Search: Table Filter
+        //
+        $("#tableFilter_phones").keyup(function(){
+            var filter = $(this).val().toUpperCase();
+            $("#phonesList").find('tr').each(function(rows) {
+                if (rows !==  0) {
+                    var row = $(this);
+                    var searching = "";
+                    if ($("#fieldSearchSelect_phones").val() == 1) {
+                        searching = row.find("td:first").text().toUpperCase();
+                    }  else if($("#fieldSearchSelect_phones").val() == 2) {
+                        searching = row.find("td:first + td ").text().toUpperCase();
+                    } else {
+                      searching = row.find("td:first + td + td ").text().toUpperCase();
+                    }
+                    if (searching.indexOf(filter) != -1) {
+                        row.show();
+                    } else {
+                        row.hide();
+                    }
+                }
+            });
+        });
+        //
+        // Search: Database search
+        //
+        $("#databaseSearch_phones").on('click',function() {
+            var search = $("#databaseSearchFilter_phones").val().replace(/[|&;$%@"<>()+,^  ]/g, "");
+            if (search) {
+                $(location).attr('href', '/'+$("#databaseSearchSelect_phones").val()+'/'+search);
+            } else {
+                $(location).attr('href', '/');
+            }
+        });
+        
+        //
+        //  If there is a database filter then add a badge
+        //
+        if ($(location).attr('pathname') !== '/') {
+           $('#databaseFilterNotice').text("("+$(location).attr('pathname')+")");
+        }
+    });
+</script>
+</body>
+</html>

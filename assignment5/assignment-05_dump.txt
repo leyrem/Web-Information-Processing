@@ -1,0 +1,19 @@
+Here I combine the data dumps from the 3 collections I created.
+
+CUSTOMERS COLLECTION: 
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"95ffa25f558944cab8664c2625d93498","collectionName":"Customers","type":"collection"}
+{"_id":{"$oid":"62594b0e5b9d163add933515"},"title":"Mx","firstName":"John","surname":"Doe","mobile":8987777,"email":"JohnNewMail@gmail.com","home_address":{"address_line_1":"55 Elmsville Green","address_line_2":"Loks","town":"Blackrock","county":"Co. Cork","EIRCODE":"T16 Z7C9"},"shipping_address":{"address_line_1":"55 Elmsville Green","address_line_2":"Loks","town":"Blackrock","county":"Co. Cork","EIRCODE":"T16 Z7C9"}}
+{"_id":{"$oid":"62594b0e5b9d163add933516"},"title":"Ms","firstName":"Mary","surname":"Johnson","mobile":83720123,"email":"Mary@gmail.com","home_address":{"address_line_1":"34 Lawfield Road","address_line_2":"","town":"Sandymount","county":"Co. Dublin","EIRCODE":"D34 DC7"},"shipping_address":{"address_line_1":"297 Green Avenue","address_line_2":"Greenfield","town":"Lucan","county":"Co. Dublin","EIRCODE":"S89 P79"}}
+
+
+ORDERS COLLECTION: 
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"6a04f587257e4c22bcac15a0d30ea360","collectionName":"Orders","type":"collection"}
+{"_id":{"$oid":"62594b0e5b9d163add93351d"},"customer":{"$oid":"62594b0e5b9d163add933515"},"phones_purchased":[{"$oid":"62594b0e5b9d163add933518"},{"$oid":"62594b0e5b9d163add933519"}]}
+{"_id":{"$oid":"62594b0e5b9d163add93351e"},"customer":{"$oid":"62594b0e5b9d163add933516"},"phones_purchased":[{"$oid":"62594b0e5b9d163add933518"}]}
+
+PHONES COLLECTION: 
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"e96198826a1f414db941cfbf97683e0b","collectionName":"Phones","type":"collection"}
+{"_id":{"$oid":"62594b0e5b9d163add933518"},"manufacturer":"Samsung","model":"Galaxy S20","price":399}
+{"_id":{"$oid":"62594b0e5b9d163add933519"},"manufacturer":"Samsung","model":"Galaxy S10","price":300}
+{"_id":{"$oid":"62594b0e5b9d163add93351b"},"manufacturer":"Apple","model":"Iphone 5s","price":200}
+{"_id":{"$oid":"62594b0e5b9d163add93351c"},"manufacturer":"Apple","model":"Iphone Xs","price":450}
